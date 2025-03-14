@@ -71,6 +71,11 @@ namespace LabelTool.ViewModels
                 }
             }
         }
+
+        public void Refresh()
+        {
+            this.OnPropertyChanged("");
+        }
         #endregion
 
     }

@@ -16,12 +16,15 @@ namespace LabelTool.ViewModels
 
         #region Private Property
         private readonly Func<ObservableCollection<ShapeObject>, CanvasViewModel> canvasFactory;
+        private readonly Func<MouseViewModel> mouseFactory;
         #endregion
 
         #region Constructor
-        public MainViewModel(Func<ObservableCollection<ShapeObject>, CanvasViewModel> canvasFactory)
+        public MainViewModel(Func<ObservableCollection<ShapeObject>, CanvasViewModel> canvasFactory, Func<MouseViewModel> mouseFactory)
         {
             this.canvasFactory = canvasFactory;
+            this.mouseFactory = mouseFactory;
+          
         }
         #endregion
 
@@ -35,6 +38,9 @@ namespace LabelTool.ViewModels
 
         [Property]
         private CanvasViewModel _CanvasViewModel = null;
+
+        [Property]
+        private MouseViewModel _MouseViewModel = null;
         #endregion
 
         #region Command
@@ -105,7 +111,51 @@ namespace LabelTool.ViewModels
         {
 
             this.CanvasViewModel = this.canvasFactory(this.ShapeObjectCollection);
+            this.MouseViewModel = this.mouseFactory();
 
+
+            this.MouseViewModel.LeftClickEvent += LeftClickEvent;
+            this.MouseViewModel.MoveEvent += MoveEvent;
+            this.MouseViewModel.RightClickEvent += RightClickEvent;
+
+            this.MouseViewModel.MiddleClickEvent += PanStartEvent;
+            this.MouseViewModel.WheelEvent += WheelEvent;
+            this.MouseViewModel.MiddleDragEvent += MiddleDragEvent;
+        }
+
+        private void MiddleDragEvent(System.Windows.Point point)
+        {
+
+            //Refresh drawing
+            this.CanvasViewModel.Refresh();
+        }
+
+        private void WheelEvent(System.Windows.Point point, bool isUpWheel)
+        {
+
+        }
+
+        private void PanStartEvent(System.Windows.Point point)
+        {
+         
+            
+            //Refresh drawing
+            this.CanvasViewModel.Refresh();
+        }
+
+        private void RightClickEvent(System.Windows.Point point)
+        {
+   
+        }
+
+        private void MoveEvent(System.Windows.Point point)
+        {
+         
+        }
+
+        private void LeftClickEvent(System.Windows.Point point)
+        {
+           
         }
 
         #endregion

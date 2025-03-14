@@ -39,9 +39,14 @@ namespace LabelTool
             #region ViewModels
             serviceCollection.AddSingleton<MainViewModel>();
             serviceCollection.AddInstance<CanvasViewModel>();
-            serviceCollection.AddInstance<Func<ObservableCollection<ShapeObject>, CanvasViewModel>>((container) =>
+            serviceCollection.AddSingleton<Func<ObservableCollection<ShapeObject>, CanvasViewModel>>((container) =>
             {
                 return (collection) => new CanvasViewModel(collection);
+            });
+
+            serviceCollection.AddSingleton<Func<MouseViewModel>>((container) =>
+            {
+                return () => new MouseViewModel();
             });
             #endregion
 
