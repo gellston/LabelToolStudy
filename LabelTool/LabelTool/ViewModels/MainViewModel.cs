@@ -128,11 +128,13 @@ namespace LabelTool.ViewModels
 
             //Refresh drawing
             this.CanvasViewModel.Refresh();
+
+            System.Diagnostics.Debug.WriteLine("pan move = {0}, {1}", point.X, point.Y);
         }
 
         private void WheelEvent(System.Windows.Point point, bool isUpWheel)
         {
-
+            System.Diagnostics.Debug.WriteLine("wheel = {0}, {1}", point.X, point.Y);
         }
 
         private void PanStartEvent(System.Windows.Point point)
@@ -141,21 +143,23 @@ namespace LabelTool.ViewModels
             
             //Refresh drawing
             this.CanvasViewModel.Refresh();
+
+            System.Diagnostics.Debug.WriteLine("pan start = {0}, {1}", point.X, point.Y);
         }
 
         private void RightClickEvent(System.Windows.Point point)
         {
-   
+            System.Diagnostics.Debug.WriteLine("right click = {0}, {1}", point.X, point.Y);
         }
 
         private void MoveEvent(System.Windows.Point point)
         {
-         
+            System.Diagnostics.Debug.WriteLine("move = {0}, {1}", point.X, point.Y);
         }
 
         private void LeftClickEvent(System.Windows.Point point)
         {
-           
+            System.Diagnostics.Debug.WriteLine("left click = {0}, {1}", point.X, point.Y);
         }
 
         #endregion

@@ -37,7 +37,8 @@
                     Margin="3"></Button>
         </UniformGrid>
 
-        <uc:SegmentationLabelViewer CanvasViewModel="{Binding CanvasViewModel}"></uc:SegmentationLabelViewer>
+        <uc:SegmentationLabelViewer CanvasViewModel="{Binding CanvasViewModel}"
+                                    MouseViewModel="{Binding MouseViewModel}"></uc:SegmentationLabelViewer>
         
     </DockPanel>
 </UserControl>
