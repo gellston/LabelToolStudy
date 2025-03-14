@@ -35,6 +35,15 @@ namespace LabelTool.UC
             get => (CanvasViewModel)GetValue(CanvasViewModelProperty); 
             set => SetValue(CanvasViewModelProperty, value);
         }
+
+
+
+        public static DependencyProperty MouseViewModelProperty = DependencyProperty.Register("MouseViewModel", typeof(MouseViewModel), typeof(SegmentationLabelViewer));
+        public MouseViewModel MouseViewModel
+        {
+            get => (MouseViewModel)GetValue(MouseViewModelProperty);
+            set => SetValue(MouseViewModelProperty, value);
+        }
         #endregion
     }
 }
